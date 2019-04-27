@@ -478,11 +478,14 @@ public class SinFunction {
 
 
     public static void main(String[] args) throws IOException {
+        long start = System.currentTimeMillis();
+
         SinFunction network = new SinFunction(100, 1, 0.05);
         ArrayList<double[][]> xyData = generateData(-3, 3, 100);
         double[][] x = xyData.get(0);
         double[][] y = xyData.get(1);
         train(x, y, 3500);
 
+        System.out.println("训练过程结束，共用时：" + String.valueOf(System.currentTimeMillis() - start));
     }
 }
