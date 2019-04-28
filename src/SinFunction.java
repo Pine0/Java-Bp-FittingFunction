@@ -364,7 +364,7 @@ public class SinFunction {
 
 
     /**
-     * 获取sigmod激活函数
+     * 获取sigmoid激活函数
      *
      * @param x 传入x数组
      * @return 返回f(x)数组
@@ -380,12 +380,12 @@ public class SinFunction {
     }
 
     /**
-     * 获取sigmod激活函数的偏导数
+     * 获取sigmoid激活函数的偏导数
      *
      * @param x 传入x数组
      * @return 返回grad(x)数组
      */
-    private static double[][] sigmodGrad(double[][] x) {
+    private static double[][] sigmoidGrad(double[][] x) {
         return broadcastingMult(broadcastingSub(sigmoid(x), 1), broadcastingMult(sigmoid(x), -1));
     }
 
@@ -455,7 +455,7 @@ public class SinFunction {
         // 反向传播
         double[][] dy = broadcastingDiv(broadcastingSub(a2, y), batchNum);
         double[][] dz1 = dot(dy, transpose(w2));
-        double[][] da1 = broadcastingMult(sigmodGrad(a1), dz1);
+        double[][] da1 = broadcastingMult(sigmoidGrad(a1), dz1);
 
         double[][] W1 = dot(transpose(x), da1);
         double[][] B1 = sum(da1);
