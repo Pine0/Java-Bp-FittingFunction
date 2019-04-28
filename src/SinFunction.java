@@ -1,12 +1,14 @@
 import java.io.*;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class SinFunction {
+
     /**
+     * SinFunction class
+     *
      * @author WangXuesong
-     * @date 2019-04-26 11:10
+     * @date 2019/04/26
      */
 
 
@@ -14,16 +16,12 @@ public class SinFunction {
 
 
     /**
-     * hiddenSize 隐藏层大小
-     * outputSize 输出层大小
      * learningRate 学习率
      * w1 输入层和隐藏层之间的权重
      * w2 隐藏层和输出层之间的权重
      * b1 输入层和隐藏层之间的偏置
      * b2 隐藏层和输出层之间的偏置
      */
-    private static int hiddenSize = 0;
-    private static int outputSize = 0;
     private static double learningRate = 0;
     private static double[][] w1 = null;
     private static double[][] w2 = null;
@@ -33,16 +31,15 @@ public class SinFunction {
     /**
      * 初始化神经网络
      *
-     * @param hidden 隐藏层个数
-     * @param output 输出层个数
+     * @param hiddenSize 隐藏层个数
+     * @param outputSize 输出层个数
+     * @param LR 学习率
      */
-    SinFunction(int hidden, int output, double LR) {
-        hiddenSize = hidden;
-        outputSize = output;
+    SinFunction(int hiddenSize, int outputSize, double LR) {
         w1 = random(1, hiddenSize);
-        b1 = zeros(hiddenSize, 1);
+        b1 = zeros(1, hiddenSize);
         w2 = random(hiddenSize, outputSize);
-        b2 = zeros(outputSize, 1);
+        b2 = zeros(1, outputSize);
         learningRate = LR;
     }
 
@@ -267,9 +264,11 @@ public class SinFunction {
      * @return 返回sum值
      */
     private static double[][] sum(double[][] arr1) {
-        double[][] sum = new double[1][1];
-        for (int i = 0; i< arr1.length; i++) {
-            sum[0][0] += arr1[i][0];
+        double[][] sum = new double[1][arr1[0].length];
+        for (int j = 0; j < arr1[0].length; j++) {
+            for (int i = 0; i < arr1.length; i++) {
+                sum[0][j] += arr1[i][j];
+            }
         }
         return sum;
     }
@@ -387,7 +386,7 @@ public class SinFunction {
      * @return 返回grad(x)数组
      */
     private static double[][] sigmodGrad(double[][] x) {
-        return broadcastingMult(broadcastingSub(sigmoid(x), 1), sigmoid(x));
+        return broadcastingMult(broadcastingSub(sigmoid(x), 1), broadcastingMult(sigmoid(x), -1));
     }
 
     /**
@@ -410,63 +409,107 @@ public class SinFunction {
         return temp;
     }
 
+    /**
+     * 计算新y值函数
+     *
+     * @param x 传入横坐标集
+     * @return 返回新y值集合
+     */
     private static double[][] pridict(double[][] x) {
-
         double[][] a1 = broadcastingAdd(dot(x, w1), b1);
-
         double[][] z1 = sigmoid(a1);
-
         return broadcastingAdd(dot(z1, w2), b2);
     }
 
-
-    private static ArrayList<Object> loss(double[][] x, double[][] t){
+    /**
+     * 损失函数
+     *
+     * @param x 传入横坐标集
+     * @param y 传入纵坐标集
+     * @return 返回新的y值和loss值
+     */
+    private static ArrayList<Object> loss(double[][] x, double[][] y){
         ArrayList<Object> temp = new ArrayList<>(2);
-        double[][] y = pridict(x);
-        temp.add(y);
-        temp.add(mean(squra(broadcastingSub(t, y))));
+        double[][] newY = pridict(x);
+        temp.add(newY);
+        temp.add(mean(squra(broadcastingSub(y, newY))));
         return temp;
     }
 
-
-    private static void gradient(double[][] x, double[][] t) {
+    /**
+     * 计算BP网络梯度
+     *
+     * @param x 传入横坐标集
+     * @param y 传入纵坐标集
+     * @return wb 返回用于计算时新的权重和偏置的W1，W2，B1，B2。
+     */
+    private static ArrayList<double[][]> gradient(double[][] x, double[][] y) {
+        ArrayList<double[][]> wb = new ArrayList<>(4);
         int batchNum = x.length;
 
-        // forward
+        // 前向传播
         double[][] a1 = broadcastingAdd(dot(x, w1), b1);
         double[][] z1 = sigmoid(a1);
         double[][] a2 = broadcastingAdd(dot(z1, w2), b2);
 
-        //backward
-        double[][] dy = broadcastingDiv(broadcastingSub(a2, t), batchNum);
-        w2 = dot(transpose(z1), dy);
-        b2 = sum(dy);
-
+        // 反向传播
+        double[][] dy = broadcastingDiv(broadcastingSub(a2, y), batchNum);
         double[][] dz1 = dot(dy, transpose(w2));
         double[][] da1 = broadcastingMult(sigmodGrad(a1), dz1);
-        w1 = dot(transpose(x), da1);
-        b1 = sum(da1);
+
+        double[][] W1 = dot(transpose(x), da1);
+        double[][] B1 = sum(da1);
+        double[][] W2 = dot(transpose(z1), dy);
+        double[][] B2 = sum(dy);
+
+        wb.add(W1);
+        wb.add(W2);
+        wb.add(B1);
+        wb.add(B2);
+
+        return wb;
     }
 
 
-
+    /**
+     * 训练函数
+     *
+     * @param x 传入横坐标集合
+     * @param y 传入纵坐标集合
+     * @param maxStep 传入最大循环次数
+     * @throws IOException 抛出IO异常
+     */
     private static void train(double[][] x, double[][] y, int maxStep) throws IOException {
         try (
+                //Sin(x)数据输出文件，第一行为x集合，第二行为y集合。
                 BufferedWriter sinxFile = new BufferedWriter(new FileWriter("./data/Sinx.txt"));
+
+                //Sin(x)拟合函数数据输出文件，基数行为x集合，偶数行为y集合。
                 BufferedWriter fitSinxFile = new BufferedWriter(new FileWriter("./data/Sinx_Fit.txt"));
+
+                //loss值数据输出文件，每一行为每一次迭代的loss值，行数和maxStep一致。
                 BufferedWriter lossValueFile = new BufferedWriter(new FileWriter("./data/Loss.txt"));
                 ) {
+
+            //输出标准sin(x)函数的x集合和y集合。
             output(sinxFile, x, y);
             for (int i = 0; i < maxStep; i++) {
-                gradient(x, y);
-                w1 = broadcastingSub(w1, broadcastingMult(sigmodGrad(w1), learningRate));
-                w2 = broadcastingSub(w2, broadcastingMult(sigmodGrad(w2), learningRate));
-                b1 = broadcastingSub(b1, broadcastingMult(sigmodGrad(b1), learningRate));
-                b2 = broadcastingSub(b2, broadcastingMult(sigmodGrad(b2), learningRate));
+                //计算BP网络梯度
+                ArrayList<double[][]> wb = gradient(x, y);
+
+                //更新权重和偏置
+                w1 = broadcastingSub(w1, broadcastingMult(wb.get(0), learningRate));
+                w2 = broadcastingSub(w2, broadcastingMult(wb.get(1), learningRate));
+                b1 = broadcastingSub(b1, broadcastingMult(wb.get(2), learningRate));
+                b2 = broadcastingSub(b2, broadcastingMult(wb.get(3), learningRate));
+
+                //获取新的y集合和loss值
                 ArrayList<Object> predLoss = loss(x, y);
-                double[][] pred = (double[][]) predLoss.get(0);
+                double[][] newY = (double[][]) predLoss.get(0);
                 double lossValue = Math.abs((double) predLoss.get(1));
-                output(fitSinxFile, x, pred);
+
+                //将新的y集合和loss值输出到文件
+                output(fitSinxFile, x, newY);
                 output(lossValueFile, lossValue);
             }
         }
@@ -478,14 +521,19 @@ public class SinFunction {
 
 
     public static void main(String[] args) throws IOException {
+        //获取开始时间
         long start = System.currentTimeMillis();
 
+        //初始化神经网络数据
         SinFunction network = new SinFunction(100, 1, 0.05);
         ArrayList<double[][]> xyData = generateData(-3, 3, 100);
         double[][] x = xyData.get(0);
         double[][] y = xyData.get(1);
-        train(x, y, 3500);
 
-        System.out.println("训练过程结束，共用时：" + String.valueOf(System.currentTimeMillis() - start));
+        //开始训练
+        train(x, y, 2000);
+
+        //控制台打印总用时
+        System.out.println("训练过程结束，共用时：" + String.valueOf(System.currentTimeMillis() - start) + "ms。");
     }
 }
