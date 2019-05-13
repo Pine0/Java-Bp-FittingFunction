@@ -18,10 +18,10 @@ import org.jfree.data.xy.DefaultXYDataset;
  */
 public class LossChart {
 
-	public static void showChart() throws IOException {
+	public static void showChart(String fun) throws IOException {
 		// 建立数据集
 		DefaultXYDataset xyDataset = new DefaultXYDataset();
-		double[][] data = getData();
+		double[][] data = getData(fun);
 		xyDataset.addSeries("Loss Value", data);
 
 		/*
@@ -48,9 +48,9 @@ public class LossChart {
 	 * @return losData
 	 * @throws IOException 抛出IO异常
 	 */
-	public static double[][] getData() throws IOException {
+	public static double[][] getData(String fun) throws IOException {
 
-		File file = new File("./data/SinX_Loss.txt");
+		File file = new File("./data/" + fun + "_Loss.txt");
 		BufferedReader br = new BufferedReader(new FileReader(file));
 
 		String line = null;

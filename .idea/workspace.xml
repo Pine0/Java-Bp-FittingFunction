@@ -2,17 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c98603fe-4efc-44c3-948e-75c90a1c4e2a" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/Java-Bp-sinx.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Java-Bp-sinx.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/SinX_Fit.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data/SinX_Fit.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/SinX_Loss.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data/SinX_Loss.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/X1+X2.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data/X1+X2.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/X1+X2_Fit.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data/X1+X2_Fit.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/X1+X2_Loss.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data/X1+X2_Loss.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Fitting.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Fitting.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/X^2_Fit.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data/X^2_Fit.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/X^2_Loss.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data/X^2_Loss.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Function.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Function.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/conf/network.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/conf/network.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/draw/FunChart.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/draw/FunChart.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/draw/LossChart.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/draw/LossChart.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -27,22 +20,22 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/data/SinX_Fit.txt">
-          <provider selected="true" editor-type-id="LargeFileEditor">
-            <state relative-caret-position="-17908" />
+        <entry file="file://$PROJECT_DIR$/src/Fitting.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-4727">
+              <caret line="133" column="13" selection-start-line="133" selection-start-column="13" selection-end-line="133" selection-end-column="13" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/data/SinX_Loss.txt">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Function.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="189">
-              <caret line="34" column="29" selection-start-line="34" selection-start-column="29" selection-end-line="34" selection-end-column="29" />
+            <state relative-caret-position="155">
+              <caret line="174" column="56" lean-forward="true" selection-start-line="174" selection-start-column="56" selection-end-line="174" selection-end-column="56" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -51,42 +44,74 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/data/X1+X2_Loss.txt">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/data/X^2_Fit.txt">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/data/X1+X2_Fit.txt">
-          <provider selected="true" editor-type-id="LargeFileEditor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/data/X^2_Loss.txt">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/data/X1+X2.txt">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/conf/network.properties">
+        <entry file="file://$PROJECT_DIR$/src/draw/FunChart.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="227">
-              <caret line="18" column="9" lean-forward="true" selection-start-line="18" selection-start-column="9" selection-end-line="18" selection-end-column="9" />
+            <state relative-caret-position="-367">
+              <caret line="20" column="23" selection-start-line="20" selection-start-column="23" selection-end-line="20" selection-end-column="23" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/data/X^2.txt">
+        <entry file="file://$PROJECT_DIR$/src/draw/LossChart.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="146">
+              <caret line="20" column="40" selection-start-line="20" selection-start-column="40" selection-end-line="20" selection-end-column="40" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#1346#1354#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/data/SinX.txt">
           <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/data/SinX_Fit.txt">
+          <provider selected="true" editor-type-id="LargeFileEditor">
+            <state relative-caret-position="150">
+              <caret line="10" column="72" selection-start-line="10" selection-start-column="72" selection-end-line="10" selection-end-column="72" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/README.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor />
+              <second_editor />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/data/X^2_Fit.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-59352">
+              <caret line="20" column="30" selection-start-line="20" selection-start-column="30" selection-end-line="20" selection-end-column="30" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/data/X^2_Loss.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-29625" />
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/conf/network.properties">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="399">
+              <caret line="31" column="12" selection-start-line="31" selection-start-column="12" selection-end-line="31" selection-end-column="12" />
+            </state>
+          </provider>
         </entry>
       </file>
     </leaf>
@@ -126,6 +151,7 @@
       <find>output</find>
       <find>loss</find>
       <find>dot</find>
+      <find>getData</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -142,8 +168,9 @@
         <option value="$PROJECT_DIR$/src/draw/FunChart.java" />
         <option value="$PROJECT_DIR$/conf/network.properties" />
         <option value="$PROJECT_DIR$/src/Fitting.java" />
-        <option value="$PROJECT_DIR$/src/Function.java" />
         <option value="$PROJECT_DIR$/src/conf/network.properties" />
+        <option value="$PROJECT_DIR$/src/draw/LossChart.java" />
+        <option value="$PROJECT_DIR$/src/Function.java" />
       </list>
     </option>
   </component>
@@ -172,6 +199,11 @@
             <path>
               <item name="Java-Bp-sinx" type="b2602c69:ProjectViewProjectNode" />
               <item name="Java-Bp-sinx" type="462c0819:PsiDirectoryNode" />
+              <item name="lib" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Java-Bp-sinx" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Java-Bp-sinx" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -179,6 +211,12 @@
               <item name="Java-Bp-sinx" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="conf" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Java-Bp-sinx" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Java-Bp-sinx" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="draw" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -294,12 +332,12 @@
       <workItem from="1557280211399" duration="3979000" />
       <workItem from="1557381662323" duration="685000" />
       <workItem from="1557386693949" duration="13538000" />
-      <workItem from="1557714140851" duration="3815000" />
+      <workItem from="1557714140851" duration="5264000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="54703000" />
+    <option name="totallyTimeSpent" value="56152000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
@@ -343,10 +381,10 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Fitting.java</url>
-          <line>83</line>
+          <url>file://$PROJECT_DIR$/src/Function.java</url>
+          <line>174</line>
           <properties />
-          <option name="timeStamp" value="24" />
+          <option name="timeStamp" value="25" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -359,23 +397,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor />
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/hello.java" />
     <entry file="file://$PROJECT_DIR$/data/LossOut.txt" />
     <entry file="file://$PROJECT_DIR$/data/SinxOut.txt" />
     <entry file="file://$PROJECT_DIR$/src/Test/SinFunction.java" />
     <entry file="file://$PROJECT_DIR$/src/Test/LossChart.java" />
     <entry file="file://$PROJECT_DIR$/src/function/Sinx.java" />
-    <entry file="file://$PROJECT_DIR$/Bp-sinx.iml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="jar:///Library/Java/JavaVirtualMachines/jdk-11.0.2.jdk/Contents/Home/lib/src.zip!/java.base/java/util/Objects.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="155">
@@ -391,44 +418,11 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/network.properties" />
-    <entry file="file://$PROJECT_DIR$/src/draw/FunChart.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="435">
-          <caret line="62" column="31" selection-start-line="62" selection-start-column="31" selection-end-line="62" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/draw/LossChart.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="27" column="20" selection-start-line="27" selection-start-column="20" selection-end-line="27" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar:///Library/Java/JavaVirtualMachines/jdk-11.0.2.jdk/Contents/Home/lib/src.zip!/java.base/java/io/Writer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="155">
           <caret line="247" column="16" selection-start-line="247" selection-start-column="16" selection-end-line="247" selection-end-column="16" />
         </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Fitting.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1410">
-          <caret line="96" lean-forward="true" selection-start-line="96" selection-end-line="96" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data/SinX.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data/SinX_Fit.txt">
-      <provider editor-type-id="text-editor" />
-      <provider selected="true" editor-type-id="LargeFileEditor">
-        <state relative-caret-position="-17908" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/data/SinX_Loss.txt">
@@ -444,29 +438,85 @@
     <entry file="file://$PROJECT_DIR$/data/X^2.txt">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/data/X^2_Fit.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data/X^2_Loss.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/data/X1+X2.txt">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Function.java">
+    <entry file="file://$PROJECT_DIR$/Bp-sinx.iml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/SinX.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/SinX_Fit.txt">
+      <provider editor-type-id="text-editor" />
+      <provider selected="true" editor-type-id="LargeFileEditor">
+        <state relative-caret-position="150">
+          <caret line="10" column="72" selection-start-line="10" selection-start-column="72" selection-end-line="10" selection-end-column="72" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor />
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/conf/network.properties">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="34" column="29" selection-start-line="34" selection-start-column="29" selection-end-line="34" selection-end-column="29" />
+        <state relative-caret-position="399">
+          <caret line="31" column="12" selection-start-line="31" selection-start-column="12" selection-end-line="31" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/X^2_Fit.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-59352">
+          <caret line="20" column="30" selection-start-line="20" selection-start-column="30" selection-end-line="20" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/X^2_Loss.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-29625" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/draw/LossChart.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="146">
+          <caret line="20" column="40" selection-start-line="20" selection-start-column="40" selection-end-line="20" selection-end-column="40" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1346#1354#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/draw/FunChart.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-367">
+          <caret line="20" column="23" selection-start-line="20" selection-start-column="23" selection-end-line="20" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Fitting.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-4727">
+          <caret line="133" column="13" selection-start-line="133" selection-start-column="13" selection-end-line="133" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/conf/network.properties">
+    <entry file="file://$PROJECT_DIR$/src/Function.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="227">
-          <caret line="18" column="9" lean-forward="true" selection-start-line="18" selection-start-column="9" selection-end-line="18" selection-end-column="9" />
+        <state relative-caret-position="155">
+          <caret line="174" column="56" lean-forward="true" selection-start-line="174" selection-start-column="56" selection-end-line="174" selection-end-column="56" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

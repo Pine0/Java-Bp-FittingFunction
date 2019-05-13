@@ -171,13 +171,13 @@ public class Function {
         double[][] x = xyData.get(0);
         double[][] y = xyData.get(1);
 
-        //开始训练，最大训练次数10000
+        //开始训练，最大训练次数为maxStep
         network.train(x, y, maxStep, modeMap.get(mode));
 
         //输出图像y=sin(x)和y=sin(x)拟合曲线,loss值曲线
         FunChart.showChart(x,y,network.getNewY(), modeMap.get(mode));
 
-        LossChart.showChart();
+        LossChart.showChart(modeMap.get(mode));
 
         return String.valueOf(System.currentTimeMillis() - startTime);
 
