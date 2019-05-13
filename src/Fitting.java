@@ -1,17 +1,14 @@
-import draw.LossChart;
-import draw.SinxChart;
-
 import java.io.*;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 /**
- * FitFunction class
+ * Fitting class
  *
  * @author WangXuesong
  * @date 2019/04/26
  */
-public class FitFunction {
+public class Fitting {
 
     /*------------------------------------------------基础矩阵计算部分--------------------------------------------------*/
 
@@ -36,34 +33,16 @@ public class FitFunction {
      *
      * @param hiddenSize 隐藏层个数
      * @param outputSize 输出层个数
-     * @param LR 学习率
+     * @param LR         学习率
      */
-    FitFunction(int hiddenSize, int outputSize, double LR) {
-        w1 = random(1, hiddenSize);
+    Fitting(int inputSize, int hiddenSize, int outputSize, double LR) {
+        w1 = random(inputSize, hiddenSize);
         b1 = zeros(1, hiddenSize);
         w2 = random(hiddenSize, outputSize);
         b2 = zeros(1, outputSize);
         learningRate = LR;
     }
 
-    /**
-     * 指定的间隔内返回均匀间隔的数字
-     *
-     * @param start 区间开始数
-     * @param end 区间结束数
-     * @param count 等间距选取数个数
-     * @return arr 返回double类型的数组
-     */
-    private static double[][] linspace(double start, double end, int count) {
-        double[][] arr = new double[count][1];
-        double increment = (end - start) / (count - 1);
-
-        for (int i = 0; i < count; i++) {
-            arr[i][0] = start + increment * i;
-        }
-
-        return arr;
-    }
 
     /**
      * 生成零数组
@@ -93,15 +72,6 @@ public class FitFunction {
         return ranArr;
     }
 
-    /**
-     * 获取sin函数值
-     *
-     * @param x 传入x
-     * @return 返回f(x)
-     */
-    private static double sin(double x) {
-        return Math.sin(x);
-    }
 
     /**
      * 将两个矩阵点乘
@@ -110,14 +80,14 @@ public class FitFunction {
      * @param arr2 传入矩阵2
      * @return 返回相乘之后的结果
      */
-    private static double[][] dot (double[][] arr1, double[][] arr2) {
+    private static double[][] dot(double[][] arr1, double[][] arr2) {
         double[][] res = new double[arr1.length][arr2[0].length];
 
-        for(int i = 0; i < res.length; i++) {
+        for (int i = 0; i < res.length; i++) {
             for (int j = 0; j < res[0].length; j++) {
                 double temp = 0;
 
-                for(int k = 0; k < arr2.length; k++) {
+                for (int k = 0; k < arr2.length; k++) {
                     temp += arr1[i][k] * arr2[k][j];
                 }
 
@@ -132,7 +102,7 @@ public class FitFunction {
     /**
      * 广播加计算函数
      *
-     * @param arr1 传入数组
+     * @param arr1     传入数组
      * @param num/arr2 传入需要广播的数字/数组
      * @return 返回广播加后的数组
      */
@@ -145,6 +115,7 @@ public class FitFunction {
         }
         return temp;
     }
+
     private static double[][] broadcastingAdd(double[][] arr1, double[] arr2) {
         double[][] temp = new double[arr1.length][arr1[0].length];
         for (int i = 0; i < temp.length; i++) {
@@ -154,6 +125,7 @@ public class FitFunction {
         }
         return temp;
     }
+
     private static double[][] broadcastingAdd(double[][] arr1, double[][] arr2) {
         double[][] temp = new double[arr1.length][arr1[0].length];
         for (int i = 0; i < temp.length; i++) {
@@ -168,7 +140,7 @@ public class FitFunction {
     /**
      * 广播减计算函数
      *
-     * @param arr1 传入数组
+     * @param arr1     传入数组
      * @param num/arr2 传入需要广播的数字/数组
      * @return 返回广播减后的数组
      */
@@ -181,6 +153,7 @@ public class FitFunction {
         }
         return temp;
     }
+
     private static double[][] broadcastingSub(double[][] arr1, double[] arr2) {
         double[][] temp = new double[arr1.length][arr1[0].length];
         for (int i = 0; i < temp.length; i++) {
@@ -190,6 +163,7 @@ public class FitFunction {
         }
         return temp;
     }
+
     private static double[][] broadcastingSub(double[][] arr1, double[][] arr2) {
         double[][] temp = new double[arr1.length][arr1[0].length];
         for (int i = 0; i < temp.length; i++) {
@@ -220,7 +194,7 @@ public class FitFunction {
      * 广播除计算函数
      *
      * @param arr1 传入数组
-     * @param num 传入需要广播的数字
+     * @param num  传入需要广播的数字
      * @return 返回广播减后的数组
      */
     private static double[][] broadcastingDiv(double[][] arr1, double num) {
@@ -236,7 +210,7 @@ public class FitFunction {
     /**
      * 广播乘计算函数
      *
-     * @param arr1 传入数组1
+     * @param arr1     传入数组1
      * @param num/arr2 传入数/数组2
      * @return 返回广播减后的数组
      */
@@ -249,6 +223,7 @@ public class FitFunction {
         }
         return temp;
     }
+
     private static double[][] broadcastingMult(double[][] arr1, double[][] arr2) {
         double[][] temp = new double[arr1.length][arr1[0].length];
         for (int i = 0; i < temp.length; i++) {
@@ -261,8 +236,9 @@ public class FitFunction {
 
     /**
      * sum函数
-     *
+     * <p>
      * 将double[n][1]数组元素相加
+     *
      * @param arr1 传入数组
      * @return 返回sum值
      */
@@ -313,7 +289,7 @@ public class FitFunction {
      */
     private static String array2String(double[][] arr1) {
         StringBuilder str = new StringBuilder();
-        DecimalFormat df = new DecimalFormat( "0.0000");
+        DecimalFormat df = new DecimalFormat("0.0000");
         str.append("[");
         for (int i = 0; i < arr1.length; i++) {
             str.append("[");
@@ -325,8 +301,7 @@ public class FitFunction {
             }
             if (i < arr1.length - 1) {
                 str.append("], ");
-            }
-            else {
+            } else {
                 str.append("]");
             }
 
@@ -338,18 +313,17 @@ public class FitFunction {
     /**
      * 文件输出函数
      *
-     * @param out 传入IO对象
-     * @param arr1 传入数组x
-     * @param arr2 传入数组y
+     * @param out  传入IO对象
+     * @param x 传入数组x
+     * @param y 传入数组y
      * @throws IOException 抛出IO异常
      */
-    private static void output(BufferedWriter out, double[][] arr1, double[][] arr2) throws IOException {
-        out.write(array2String(arr1));
+    private static void output(BufferedWriter out, double[][] x, double[][] y) throws IOException {
+        out.write(array2String(x));
         out.newLine();
-        out.write(array2String(arr2));
+        out.write(array2String(y));
         out.newLine();
     }
-
     /**
      * 文件输出函数
      *
@@ -392,25 +366,6 @@ public class FitFunction {
         return broadcastingMult(broadcastingSub(sigmoid(x), 1), broadcastingMult(sigmoid(x), -1));
     }
 
-    /**
-     * 产生x，y数据集
-     *
-     * @param start 横坐标开始位
-     * @param end 横坐标结束位
-     * @param count 点数量
-     * @return 返回x，y数组
-     */
-    private static ArrayList<double[][]> generateData(double start, double end, int count) {
-        ArrayList<double[][]> temp = new ArrayList<>(2);
-        double[][] x = linspace(start, end, count);
-        double[][] y = new double[x.length][1];
-        for (int i = 0; i < y.length; i++) {
-            y[i][0] = sin(x[i][0]);
-        }
-        temp.add(x);
-        temp.add(y);
-        return temp;
-    }
 
     /**
      * 计算新y值函数
@@ -431,7 +386,7 @@ public class FitFunction {
      * @param y 传入纵坐标集
      * @return 返回新的y值和loss值
      */
-    private static ArrayList<Object> loss(double[][] x, double[][] y){
+    private static ArrayList<Object> loss(double[][] x, double[][] y) {
         ArrayList<Object> temp = new ArrayList<>(2);
         double[][] newY = pridict(x);
         temp.add(newY);
@@ -474,29 +429,34 @@ public class FitFunction {
     }
 
 
+
+    public double[][] getNewY() {
+        return newY;
+    }
+
     /**
      * 训练函数
      *
-     * @param x 传入横坐标集合
-     * @param y 传入纵坐标集合
+     * @param x       传入横坐标集合
+     * @param y       传入纵坐标集合
      * @param maxStep 传入最大循环次数
      * @throws IOException 抛出IO异常
      */
-    private static void train(double[][] x, double[][] y, int maxStep) throws IOException {
+    public void train(double[][] x, double[][] y, int maxStep, String fun) throws IOException {
         try (
-                //Sin(x)数据输出文件，第一行为x集合，第二行为y集合。
-                BufferedWriter sinxFile = new BufferedWriter(new FileWriter("./data/Sinx.txt"));
+                //目标函数数据输出文件，第一行为x集合，第二行为y集合。
+                BufferedWriter funFile = new BufferedWriter(new FileWriter("./data/" + fun +".txt"));
 
-                //Sin(x)拟合函数数据输出文件，基数行为x集合，偶数行为y集合。
-                BufferedWriter fitSinxFile = new BufferedWriter(new FileWriter("./data/Sinx_Fit.txt"));
+                //拟合目标函数数据输出文件，基数行为x集合，偶数行为y集合。
+                BufferedWriter fitFile = new BufferedWriter(new FileWriter("./data/" + fun + "_Fit.txt"));
 
                 //loss值数据输出文件，每一行为每一次迭代的loss值，行数和maxStep一致。
-                BufferedWriter lossValueFile = new BufferedWriter(new FileWriter("./data/Loss.txt"));
-                ) {
+                BufferedWriter lossValueFile = new BufferedWriter(new FileWriter("./data/" + fun + "_Loss.txt"));
+        ) {
 
             //输出标准sin(x)函数的x集合和y集合。
-            output(sinxFile, x, y);
-            
+            output(funFile, x, y);
+
             for (int i = 0; i < maxStep; i++) {
                 //计算BP网络梯度
                 ArrayList<double[][]> wb = gradient(x, y);
@@ -513,47 +473,12 @@ public class FitFunction {
                 double lossValue = Math.abs((double) predLoss.get(1));
 
                 //将新的y集合和loss值输出到文件
-                output(fitSinxFile, x, newY);               
+                output(fitFile, x, newY);
                 output(lossValueFile, lossValue);
             }
         }
 
     }
-
-
-    /*-------------------------------------------------main函数部分----------------------------------------------------*/
-
-
-    public static void main(String[] args) throws IOException {
-        //获取开始时间
-        long start = System.currentTimeMillis();
-
-        /*
-         * 初始化神经网络数据
-         * hiddenSize: 20
-         * outputSize: 1
-         * LR: 0.05
-         */
-        FitFunction network = new FitFunction(20, 1, 0.1);
-
-        /*
-         * 产生等间距数据
-         * start: -3
-         * end: 3
-         * count: 100
-         */
-        ArrayList<double[][]> xyData = generateData(-3, 3, 100);
-        double[][] x = xyData.get(0);
-        double[][] y = xyData.get(1);
-
-        //开始训练，最大训练次数10000
-        train(x, y, 10000);
-
-        //输出图像y=sin(x)和y=sin(x)拟合曲线,loss值曲线
-        SinxChart.showChart(x,y,newY);
-        LossChart.showChart();
-
-        //控制台打印总用时
-        System.out.println("训练过程结束，共用时：" + String.valueOf(System.currentTimeMillis() - start) + "ms。");
-    }
 }
+
+

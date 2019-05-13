@@ -50,7 +50,7 @@ public class LossChart {
 	 */
 	public static double[][] getData() throws IOException {
 
-		File file = new File("./data/Loss.txt");
+		File file = new File("./data/SinX_Loss.txt");
 		BufferedReader br = new BufferedReader(new FileReader(file));
 
 		String line = null;

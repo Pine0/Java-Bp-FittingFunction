@@ -11,14 +11,14 @@ import org.jfree.chart.renderer.xy.XYShapeRenderer;
 import org.jfree.data.xy.DefaultXYDataset;
 
 /**
- * SinxChart class
+ * FunChart class
  *
  * @author LuLiyun
  * @date 2019/05/01
  */
-public class SinxChart {
+public class FunChart {
 
-	public static void showChart(double[][] x, double[][] y, double[][] newY) {
+	public static void showChart(double[][] x, double[][] y, double[][] newY, String fun) {
 
 		double[][] dataset1 = new double[2][x.length];
 		double[][] dataset2 = new double[2][x.length];
@@ -33,8 +33,8 @@ public class SinxChart {
 		DefaultXYDataset xyDataset1 = new DefaultXYDataset();
 		// Sin(x)拟合
 		DefaultXYDataset xyDataset2 = new DefaultXYDataset();
-		xyDataset1.addSeries("SinX", dataset1);
-		xyDataset2.addSeries("SinX_Fix", dataset2);
+		xyDataset1.addSeries(fun, dataset1);
+		xyDataset2.addSeries(fun + "_Fix", dataset2);
 
 		XYItemRenderer renderer1 = new XYShapeRenderer();
 		//x轴
@@ -56,9 +56,9 @@ public class SinxChart {
 		plot.setDataset(1, xyDataset2);
 		plot.setRenderer(1, renderer2);
 
-		JFreeChart chart = new JFreeChart("SinX Chart", JFreeChart.DEFAULT_TITLE_FONT, plot, true);
+		JFreeChart chart = new JFreeChart(fun + " Chart", JFreeChart.DEFAULT_TITLE_FONT, plot, true);
 
-		ChartFrame frame = new ChartFrame("SinX 散点图", chart, true);
+		ChartFrame frame = new ChartFrame(fun + " 散点图", chart, true);
 		frame.pack();
 		frame.setVisible(true);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
